@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\Html;
+use ebbs\views\ViewHelper as VH;
+?>
+<h1>Dashboard</h1>
+<div class="rounded-wrapper">
+    <h2><?php echo Html::e($user->Username); ?></h2>
+    <div class="rounded-content">
+        <div id="profile-image"><?php echo VH::profileImg($user); ?></div>
+    </div>
+    <div class="rounded-content">
+        <ul>
+            <?php
+            echo Html::menulink('blog/view/' . $user->UserId, 'View blog');
+            echo Html::menulink('dashboard/newpost', 'New post');
+//echo Html::menulink('user/edit/' . $user->UserId, 'Manage Blog');
+            echo Html::menulink('user/profile/' . $user->UserId, 'View profile');
+            echo Html::menulink('dashboard/edit/' . $user->UserId, 'Edit profile'); ?>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>

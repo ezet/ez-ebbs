@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\Html;
+?>
+
+<h2>Flagged Comments</h2>
+<?php foreach ($comments as $comment) {
+?>
+    <div class="comment-wrapper">
+        <div class="comment-meta">
+            <h3 class="comment-author"><?php echo Html::e($comment->Author); ?></h3>
+            <span class="date"><?php echo Html::e($comment->Created); ?></span>
+            <div class="admin-row">
+                <span class="meta-link"><?php echo Html::link('admin/unflagcomment/' . $comment->CommentId, 'Unflag') ?></span>
+                <span class="meta-link"><?php echo Html::link('admin/deletecomment/' . $comment->CommentId, 'Delete'); ?></span>
+            <?php if ($comment->UserId)
+
+            ?>
+                <span class="meta-link"><?php echo Html::link('admin/blockuser/' . $comment->UserId, 'Block User'); ?></span>
+            </div>
+        </div>
+        <div class="comment-text"><?php echo Html::e($comment->Text); ?>
+        </div>
+    </div>
+<?php } ?>
+

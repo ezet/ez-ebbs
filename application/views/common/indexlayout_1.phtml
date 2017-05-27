@@ -1,0 +1,47 @@
+<?php
+/*
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+
+namespace ebbs\views;
+?>
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title><?php echo $pagetitle ?></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo __BASE_URL ?>/media/css/common.css"/>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div id="top-filler">
+                </div>
+                <div id="topmenu"><?php echo $topmenu; ?>
+                </div>
+                <div id="banner">
+                    <div id="banner-overlay"></div>
+                </div>
+            </div> <!-- /header -->
+
+
+            <div id="content"><?php echo $content; ?>
+            </div> <!-- /content -->
+
+
+            <div id="sidebar"><?php echo $sidebar; ?>
+            </div> <!-- /sidebar -->
+
+
+            <div id="footer"><?php include 'footer.phtml'; ?>
+            </div>  <!-- /footer -->
+
+
+        </div> <!-- /wrapper -->
+    </body>
+</html>

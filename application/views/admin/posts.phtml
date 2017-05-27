@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\html;
+use ebbs\views\ViewHelper as VH;
+?>
+
+<h2>Flagged Blogposts</h2>
+<?php foreach ($blogposts as $blogpost) {
+ ?>
+    <div class="blogpost-wrapper">
+        <h1 class="blogpost-title"><?php echo Html::e($blogpost->Title); ?></h1>
+        <div class="blogpost-meta">
+            <?php echo VH::created($blogpost); ?>
+        </div>
+
+        <div class="admin-row">
+            <span class="meta-link"><?php echo Html::link('admin/unflagpost/' . $blogpost->BlogpostId, 'Unflag') ?></span>
+            <span class="meta-link"><?php echo Html::link('admin/deletepost/' . $blogpost->BlogpostId, 'Delete') ?></span>
+            <span class="meta-link"><?php echo Html::link('admin/blockuser/' . $blogpost->UserId, 'Block User') ?></span>
+        </div>
+
+        <div class="blogpost-text">
+<?php echo $blogpost->Text; ?>
+    </div>
+    <div class="blogpost-footer">
+        <?php echo VH::modified($blogpost); ?>
+    </div>
+</div>
+<?php
+}

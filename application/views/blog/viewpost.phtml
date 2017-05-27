@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\html;
+use ebbs\views\ViewHelper as VH;
+
+Html::injectModel($commentform);
+?>
+<div class="blogpost-wrapper">
+    <h1 class="blogpost-title"><?php echo Html::e($blogpost->Title); ?></h1>
+    <div class="blogpost-meta">
+        <?php echo VH::created($blogpost); ?>
+        <span class="meta-link"><?php echo Html::url('#comments', 'Comments'); ?></span>
+    </div>
+
+    <?php echo VH::blogpostAdmin($user, $blogpost); ?>
+
+        <div class="blogpost-text">
+        <?php echo $blogpost->Text; ?>
+    </div>
+    <div class="blogpost-footer">
+        <?php echo VH::modified($blogpost); ?>
+        <?php echo VH::blogpostFlag($blogpost); ?>
+        <?php echo VH::fbLike($blogpost) ?>
+
+    </div>
+</div>
+<h2><a name="comments">Comments</a></h2>
+<h3>Add new comment</h3>
+<?php
+        echo Html::form('POST');
+        echo Html::formErrors();
+
+        echo Html::formLabel('Author');
+        echo Html::formInput('Author');
+
+        echo Html::formLabel('WebUrl', 'Website');
+        echo Html::formUrl('WebUrl');
+
+        echo Html::formLabel('Email');
+        echo html::formEmail('Email');
+
+        echo Html::formTextarea('Text');
+
+        // reCaptcha
+        require_once(__APP_PATH . '/libraries/recaptchalib.php');
+        $publickey = "6Ld58sESAAAAAIGRZli1BWlfAsSSgM45twJDLLmj";
+        echo recaptcha_get_html($publickey);
+
+        echo Html::formSubmit('addComment', 'Add');
+
+        Html::formEnd();
+?>
+
+<?php foreach ($comments as $comment) {
+?>
+            <div class="comment-wrapper">
+                <div class="comment-meta">
+                    <h3 class="comment-author"><?php echo Html::e($comment->Author); ?></h3>
+        <?php
+            echo VH::created($comment);
+            echo VH::commentFlag($comment);
+
+            if (!$comment->Deleted && $user->isOwner('Blogpost', $blogpost->BlogpostId)) {
+        ?>
+                <div class="admin-row">
+                    <span class="meta-link">
+                <?php echo Html::link('comment/delete/' . $comment->CommentId . '/' . $blogpost->BlogpostId, 'Delete'); ?>
+            </span>
+        </div>
+        <?php } ?>
+        </div>
+        <div class="comment-text"><?php echo Html::e($comment->Text); ?>
+        </div>
+    </div>
+<?php } ?>

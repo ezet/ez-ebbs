@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\html;
+use ebbs\views\ViewHelper as VH;
+?>
+
+<h1>User Statistics</h1>
+Sort by:
+<div class="admin-row">
+    <?php
+    echo '<span class="meta-link">', Html::link('admin/userstats/FlaggedCount', 'times flagged'), '</span>';
+    echo '<span class="meta-link">', Html::link('admin/userstats/LastLogin', 'last login'), '</span>';
+    echo '<span class="meta-link">', Html::link('admin/userstats/Created', 'date created'), '</span>';
+    ?>
+</div>
+<?php
+    foreach ($users as $user) {
+?>
+        <div class="bloglist-item">
+            <div class="rounded-wrapper">
+                <h2><?php echo Html::link('/blog/view/' . $user->UserId, Html::e($user->BlogTitle)); ?></h2>
+
+                <div class="admin-row">
+            <?php
+            echo '<span class="meta-link">';
+            if ($user->Blocked)
+                echo Html::link('admin/unblockuser/' . $user->UserId, 'Unblock');
+            else
+                echo Html::link('admin/blockuser/' . $user->UserId, 'Block');
+            echo '</span>';
+            ?>
+            <span class="meta-link"><?php echo Html::link('admin/deleteuser/' . $user->UserId, 'Delete'); ?> </span>
+        </div>
+        This user has been flagged <?php echo Html::e($user->FlaggedCount); ?> times.
+        <div class="rounded-content">
+            <div id="profile-image"><?php echo VH::profileImg($user); ?></div>
+        </div>
+        <div class="rounded-content">
+            <ul>
+                <li>Username: <?php echo $user->Username; ?></li>
+                <li>Firstname: <?php echo $user->FirstName; ?></li>
+                <li>Lastname: <?php echo $user->LastName; ?></li>
+                <li>Blog title: <?php echo $user->BlogTitle; ?></li>
+                <li>Email: <?php echo $user->Email; ?></li>
+                <li>Website: <?php echo $user->WebUrl; ?></li>
+                <li>Last login: <?php echo $user->LastLogin; ?></li>
+                <li>Joined: <?php echo $user->Created; ?></li>
+                <li>Status: <?php echo $user->Blocked ? 'Blocked' : 'Active'; ?></li>
+                <li>Role: <?php echo $user->Admin ? 'Administrator' : 'Member'; ?></li>
+            </ul>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+<?php } ?>

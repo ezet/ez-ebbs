@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\html;
+use ebbs\views\ViewHelper as VH;
+
+Html::injectModel($user);
+?>
+
+<?php
+
+echo Html::formErrors();
+echo '<div class="rounded-wrapper">';
+
+echo Html::form('POST', null, array('enctype' => 'multipart/form-data'));
+
+echo Html::formLabel('FirstName', 'Firstname');
+echo Html::formInput('FirstName', null, array('autofocus' => 'autofocus'));
+
+echo Html::formLabel('LastName', 'Lastname');
+echo Html::formInput('LastName');
+
+echo Html::formLabel('Username');
+echo Html::formInput('Username');
+
+echo Html::formLabel('Password');
+echo Html::formPassword('Password');
+
+echo Html::formLabel('ConfirmPassword', 'Confirm Password');
+echo Html::formPassword('ConfirmPassword');
+
+echo Html::formLabel('Email');
+echo Html::formEmail('Email');
+
+echo Html::formLabel('BlogTitle', 'Blog title');
+echo Html::formInput('BlogTitle');
+
+echo Html::formLabel('Template');
+echo '<formfield>';
+echo Html::formRadio('Template', 'default'), ' Default';
+echo Html::formRadio('Template', 'sunset'), ' Sunset';
+echo '</formfield>';
+
+echo Html::formLabel('WebUrl', 'Website');
+echo Html::formUrl('WebUrl');
+
+echo Html::formLabel('About', 'About me');
+echo Html::formTextarea('About');
+
+echo VH::profileImg($user);
+echo Html::formLabel('ProfileImage');
+echo Html::formFile('ProfileImage', array('accept' => 'image/gif, image/png, image/jpeg, image/pjpeg, image/jpeg, image/pjpeg'));
+
+echo Html::formSubmit('save', 'Save');
+echo Html::formEnd();
+echo '</div>';

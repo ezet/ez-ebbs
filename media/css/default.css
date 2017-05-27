@@ -1,0 +1,448 @@
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ *
+ * Common CSS styling
+*/
+
+/*root {
+    display: block;
+}*/
+
+body, * {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial,"Times New Roman", Georgia, Serif;
+}
+
+body {
+    /*    background-color: #cccccc;*/
+}
+
+h1 {
+    font-size: 1.7em;
+    margin: 5px 0px;
+}
+
+/*************************** LINKS ******************************/
+a, a:visited {
+    color: #336699;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #003366;
+}
+
+#logo a, #logo a:visited, #logo a:hover {
+    color: #eee;
+    text-shadow: 3px 3px 5px #000;
+}
+
+
+/*************************** TOPMENU ******************************/
+
+div#topmenu {
+    font-size: 12px;
+    font-weight: bold;
+    color: #CCCC99;
+    text-align: right;
+
+}
+
+div#topmenu a {
+    color: #FFF8DC;
+    text-decoration: underline;
+    /*    font-variant: small-caps;*/
+}
+
+div#topmenu a:hover{
+    text-decoration: underline;
+}
+
+div#topmenu ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+div#topmenu li {
+    display: inline;
+    list-style-type: none;
+    margin: 0px 8px;
+}
+
+
+
+/*************************** SIDEBAR ******************************/
+
+div#mainmenu, div#usermenu, div#adminmenu {
+    font-family: Arial;
+}
+
+div#mainmenu a, div#usermenu a, div#adminmenu a {
+    color: #834C24;
+    font-size: 0.65em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+div#mainmenu a {}
+
+div#mainmenu a:hover {}
+
+div#mainmenu ul, #adminmenu ul {
+    font-size: 1.5em;
+    list-style-type: square;
+    text-transform: uppercase;
+    color: grey;
+}
+
+div#mainmenu li {
+}
+
+
+/*************************** LAYOUT ******************************/
+
+#wrapper, #header, #banner, #mainmenu, #content, #sidebar, #footer {
+}
+
+#wrapper {
+    margin: auto;
+    padding-left: 150px;
+    width: 800px;
+
+}
+
+div#header-wrapper {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    border-bottom: 4px #993300 solid;
+    background-color: #003366;
+    -moz-box-shadow: 0px 0px 15px #000;
+    -webkit-box-shadow: 0px 0px 15px #000;
+    box-shadow: 0px 0px 15px #000;
+    z-index: 1;
+    background-image: -moz-linear-gradient(top, #336699, #036);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #336699),color-stop(1, #036));
+    background-image: -webkit-linear-gradient(#336699, #036);
+    background-image: linear-gradient(top, #336699, #036);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#336699', EndColorStr='#036');
+
+}
+
+div#header {
+    margin: auto;
+    padding-left: 70px;
+    width: 750px;
+}
+
+div#logo {
+    margin: 10px 25px 0px;
+    float: left;
+}
+
+
+div#topmenu {
+    margin-top: 15px;
+    float: right;
+}
+
+#sidebar, #content {
+    font-size: 0.8em;
+    float: left;
+    clear: right;
+}
+
+div#content {
+    position: relative;
+    margin: auto;
+    min-height: 500px;
+    width: 500px;
+    padding: 20px 30px;
+    color: #1F1209;
+    background-color: #E7EBF0;
+    z-index: 0;
+
+    -moz-box-shadow: 0px 3px 20px #000;
+    -webkit-box-shadow: 0px 3px 20px #000;
+    box-shadow: 0px 3px 20px #000;
+
+    -moz-border-radius: 0px 0px 12px 12px;
+    -webkit-border-radius: 0px 0px 12px 12px;
+    border-radius: 0px 0px 12px 12px;
+
+    background-image: -moz-linear-gradient(top, #ddd, #999);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ddd),color-stop(1, #999999));
+    background-image: -webkit-linear-gradient(#ddd, #999);
+    background-image: linear-gradient(top, #ddd, #999);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ddd', EndColorStr='#999');
+
+
+}
+
+#sidebar {
+    margin: 20px 40px;
+    width: 150px;
+    height: 200px;
+}
+
+#footer {
+    width: 300px;
+    clear: both;
+    margin: auto;
+    padding-top: 20px;
+    font-size: 0.6em;
+
+}
+
+/*************************** GENERAL CONTENT ******************************/
+
+div.rounded-wrapper {
+    margin: 10px auto;
+    width: 92%;
+    padding: 20px;
+    border: 1px #ccc solid;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    background-color: #f2f2f2;
+
+}
+
+div.rounded-content {
+    margin: 10px;
+    float: left;
+}
+
+div.rounded-wrapper textarea {
+    width: 255px;
+    max-width: 300px;
+    margin: 0px;
+}
+
+
+
+/*************************** BLOG ******************************/
+div.blogpost-wrapper {
+    margin: 10px 0px;
+    padding: 10px 0px;
+    border-bottom: 1px #444 dashed;
+}
+div#content h2 {
+
+}
+
+div.blogpost-meta {
+    float: left;
+}
+
+div.admin-row {
+    float: right;
+}
+
+div.blogpost-text {
+    clear: both;
+
+}
+
+div.blogpost-footer {
+    padding: 5px 0px;
+}
+
+span.meta-link {
+    margin: 0px 8px;
+}
+
+.meta-link iframe {
+    vertical-align: bottom;
+    height: 20px;
+    width: 50px;
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+}
+
+div.bloglist-item {
+}
+
+
+
+
+
+/*************************** COMMENTS ******************************/
+div.comment-wrapper {
+    margin: 20px 0px;
+}
+
+
+
+/*************************** PROFILE ******************************/
+div#profile {
+
+}
+
+div#profile-image {
+    padding-top: 10px;
+    /*    border: 1px black dashed;*/
+}
+
+div#profile-info {
+
+}
+
+
+/*************************** IMAGES ******************************/
+
+img.photo {
+    background: #DDD;
+    float: right !important;
+    padding: 25px 25px;
+}
+
+img.profile {}
+
+
+
+/*************************** FORMS ******************************/
+
+div#form-wrapper {
+
+}
+
+form {
+}
+
+label {
+    /*    margin: 3px 0px;*/
+    width : 120px;
+    margin-right : 5px;
+    padding: 6px 5px;
+    font-size : 1em;
+    font-weight : bold;
+    text-align : right;
+    float : left;
+    display: block;
+}
+
+input {
+    padding: 2px;
+    width: 250px;
+    margin: 10px;
+    margin-right: 10px !important;
+    font-size : 1.4em;
+    font-family : Calibri, 'Arial Narrow', sans-serif;
+    display: block;
+}
+
+select {
+    width : 250px;
+}
+
+input[type="radio"] {
+    display: inline;
+    width: 30px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    }
+
+input[name="postalcode"] {
+    width : 120px;
+}
+
+
+
+input[type="submit"], input[type="reset"], button {
+    margin: 10px;
+    display: inline;
+    width: auto;
+    padding: 0px 15px;
+}
+
+input[type="submit"] {
+    margin-left: 130px;
+}
+
+textarea {
+    width: 480px;
+    max-width: 480px;
+    height: 150px;
+    margin: 10px;
+}
+
+input[type="file"] {
+    margin-left: 120px;
+    padding: 2px 20px;
+    font-size: 16px;
+}
+
+div.editor-wrapper iframe {
+    max-width: 500px;
+}
+
+.editor-wrapper label {
+    width: 30px;
+}
+
+.editor-wrapper input[type="text"] {
+    margin-left: 0px;
+    width: 430px;
+}
+
+#search input {
+    padding: 0px;
+    width: 150px;
+    margin: 4px 0px;
+}
+
+/*************************** MISC ******************************/
+
+div.error {
+    margin: 10px;
+    border: 1px red solid;
+    padding: 10px 10px;
+    color : #555;
+    background-color: #FDF;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+div.warning {
+
+}
+
+div.clear {
+    clear: both;
+}
+
+span#welcome {
+    margin: 0px 10px;
+    line-height: 2;
+}
+
+.small, .date {
+    font-size : 0.85em;
+    font-weight : normal;
+    font-family : 'Arial Narrow', sans-serif;
+    color: #555;
+
+}
+
+ul {
+    margin: 10px 0px;
+    padding-left: 20px;
+}
+
+/*remove this*/
+div#content table {
+    color: white;
+    font-size: inherit;
+}
+
+div#recaptcha_area {
+    margin: auto;
+}

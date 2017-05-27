@@ -1,0 +1,28 @@
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ *
+ * Alternate CSS styling
+*/
+
+
+/*************************** LINKS ******************************/
+a, a:visited {
+    color: #552255;
+}
+
+a:hover {
+    color: #552255;
+}
+
+div#header-wrapper {
+    border-bottom: 4px #FFCC00 solid;
+    background-color: #DD3333;
+    background-image: -moz-linear-gradient(top, #881010, #DD3333);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #881010),color-stop(1, #DD3333));
+    background-image: -webkit-linear-gradient(#881010, #DD3333);
+    background-image: linear-gradient(top, #881010, #DD3333);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#881010', EndColorStr='#DD3333');
+}

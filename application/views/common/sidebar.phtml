@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\html;
+use ebbs\views\ViewHelper as VH;
+?>
+
+<?php if ($request->getController() == 'ebbs\controllers\blog\blogController' &&
+        ($request->getAction() == 'actionView' || $request->getAction() == 'actionViewpost')) : ?>
+    <div id="profile">
+        <h3><?php echo Html::e($blogger->BlogTitle); ?></h3>
+        <div id="sidebar-image"><?php echo VH::profileImg($blogger); ?></div>
+        <div id="sidebar-info">
+        <?php echo Html::link('user/profile/' . $blogger->UserId, 'View profile'); ?>
+        <ul>
+            <li>Name: <?php echo Html::e($blogger->FirstName); ?></li>
+            <li>Username: <?php echo Html::e($blogger->Username); ?></li>
+            <li>Email: <?php echo Html::e($blogger->Email); ?></li>
+        </ul>
+            <h3>About me:</h3>
+        <?php echo Html::e($blogger->About); ?>
+    </div>
+</div>
+<?php else : ?>
+            <div id="mainmenu">
+                <ul>
+        <?php
+            echo Html::menulink('blog/listall', 'All Blogs');
+            echo Html::menulink('blog/topblogs', 'Top Blogs');
+            echo Html::menulink('blog/postsbyviews', 'Most Viewed');
+            echo Html::menulink('blog/postsbycomments', 'Most Commented');
+            echo Html::menulink('data/initdb.php', 'Reset DB');
+        ?>
+        </ul>
+    </div>
+    <div id="search">
+    <?php
+            echo Html::form('GET', __BASE_URL . '/user/search');
+            echo Html::formInput('search', '', array('placeholder' => 'Username or title'));
+            echo Html::formSubmit('submit', 'search');
+            echo Html::formEnd();
+    ?>
+
+        </div>
+<?php endif; ?>
+
+<?php if ($this->user->isAdmin()) : ?>
+                <div id="adminmenu">
+                    <h3>Admin Panel</h3>
+                    <ul>
+        <?php echo Html::menulink('admin/flaggedposts', 'Flagged Posts'); ?>
+        <?php echo Html::menulink('admin/flaggedcomments', 'Flagged Comments'); ?>
+        <?php echo Html::menulink('admin/blockedusers', 'Blocked Users'); ?>
+<?php echo Html::menulink('admin/userstats', 'User Statistics'); ?>
+            </ul>
+        </div>
+<?php
+                endif;

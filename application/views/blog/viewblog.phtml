@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\html;
+use ebbs\views\ViewHelper as VH;
+?>
+<?php foreach ($blogposts as $blogpost) { ?>
+    <div class="blogpost-wrapper">
+        <a name="<?php echo $blogpost->BlogpostId; ?>"></a>
+        <h1 class="blogpost-title"><?php echo Html::link('blog/viewpost/' . $blogpost->BlogpostId, $blogpost->Title); ?></h1>
+        <div class="blogpost-meta">
+            <?php echo VH::created($blogpost); ?>
+            <span class="meta-link"><?php echo Html::link('blog/viewpost/' . $blogpost->BlogpostId.'/#comments', 'Comments'); ?></span>
+        </div>
+
+        <?php echo VH::blogpostAdmin($user, $blogpost); ?>
+
+
+        
+        <div class="blogpost-text">
+        <?php echo $blogpost->Text; ?>
+    </div>
+    <div class="blogpost-footer">
+        <?php echo VH::modified($blogpost); ?>
+        <span class="meta-link"><?php echo Html::link('blog/viewpost/' . $blogpost->BlogpostId.'/#comments', 'Comments'); ?></span>
+        <?php echo VH::BlogpostFlag($blogpost); ?>
+        <?php echo VH::fbLike($blogpost); ?>
+    </div>
+</div>
+<?php }

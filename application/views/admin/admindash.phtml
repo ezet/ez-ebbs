@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\Html;
+use ebbs\views\ViewHelper as VH;
+?>
+<h1>Admin Control Panel</h1>
+<div class="rounded-wrapper">
+<!--    <h3><?php echo Html::e($user->Username); ?></h3>-->
+    <div class="rounded-content">
+
+<!--        <div id="dashboard-image" style="float: left;"><?php echo VH::profileImg($user); ?></div>-->
+
+    </div>
+    <div class="rounded-content">
+        <ul>
+            <?php
+            echo Html::menulink('admin/flaggedposts', 'Flagged posts');
+            echo Html::menulink('admin/flaggedposts', 'Flagged comments');
+            echo Html::menulink('admin/deletedposts', 'Deleted posts');
+            echo Html::menulink('admin/deletedcomments', 'Deleted comments');
+            echo Html::menulink('admin/userstats', 'User stats');
+            echo Html::menulink('admin/blockedusers', 'Blocked users'); ?>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>

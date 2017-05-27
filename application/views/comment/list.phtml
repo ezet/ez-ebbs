@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\html;
+
+foreach ($comments as $comment) {
+?>
+    <div class="comment">
+        <span class="username">posted by <?php Html::e($comment->Username); ?></span>
+        @ <span class="modified"><?php Html::e($comment->Modified); ?></span><br/>
+        <span class="weburl">website: <?php Html::e($comment->WebUrl); ?></span><br/>
+        <span class="email">email: <?php Html::e($comment->Email); ?></span><br/>
+        <span class="comment-text"><?php Html::e($comment->Text); ?></span><br/>
+    </div>
+<?php
+}

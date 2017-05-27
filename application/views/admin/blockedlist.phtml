@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\html;
+use ebbs\views\ViewHelper as VH;
+?>
+
+<h1>Blocked Users</h1>
+<?php foreach ($users as $user) {
+?>
+    <div class="bloglist-item">
+        <div class="rounded-wrapper">
+            <h2><?php echo Html::link('/blog/view/' . $user->UserId, Html::e($user->BlogTitle)); ?></h2>
+
+            <div class="admin-row">
+                <span class="meta-link"><?php echo Html::link('admin/unblockuser/' . $user->UserId, 'Unblock'); ?></span>
+                <span class="meta-link"><?php echo Html::link('admin/deleteuser/' . $user->UserId, 'Delete'); ?></span>
+            </div>    
+            <div class="rounded-content">
+                <div id="profile-image"><?php echo VH::profileImg($user); ?></div>
+            </div>
+            <div class="rounded-content">
+                <ul>
+                    <li>Username: <?php echo $user->Username; ?></li>
+                    <li>Firstname: <?php echo $user->FirstName; ?></li>
+                    <li>Lastname: <?php echo $user->LastName; ?></li>
+                    <li>Blog title: <?php echo $user->BlogTitle; ?></li>
+                    <li>Email: <?php echo $user->Email; ?></li>
+                    <li>Website: <?php echo $user->WebUrl; ?></li>
+                    <li>Last login: <?php echo $user->LastLogin; ?></li>
+                    <li>Joined: <?php echo $user->Created; ?></li>
+                    <li>Status: <?php echo $user->Blocked ? 'Blocked' : 'Active'; ?></li>
+                    <li>Role: <?php echo $user->Admin ? 'Administrator' : 'Member'; ?></li>
+                </ul>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+<?php } ?>

@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\html;
+?>
+
+<?php
+//    echo Html::menulink('', 'Index');
+if ($user->isLogged()) {
+    echo '<span id="welcome">Welcome back, ';
+    echo Html::e($user->getName());
+    echo '</span><br/><ul>';
+    echo Html::menulink('dashboard', 'Dashboard');
+    echo Html::menulink('blog/view/' . $user->getId(), 'My blog');
+    echo Html::menulink('dashboard/newpost', 'New post');
+    echo Html::menulink('dashboard/logout', 'Logout');
+    if ($user->isAdmin())
+        echo Html::menulink('admin', 'ACP');
+} else {
+?>
+    <span id="welcome">Get started,</span>
+    <br/>
+    <ul> <?php
+    echo Html::menulink('user/login', 'Login');
+    echo 'or';
+    echo Html::menulink('user/register', 'Register');
+}
+?>
+
+</ul>

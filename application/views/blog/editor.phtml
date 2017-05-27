@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @author     Lars Kristian Dahl <http://www.krisd.com>
+ * @copyright  Copyright (c) 2011 Lars Kristian Dahl <http://www.krisd.com>
+ * @license    http://www.apache.org/licenses/LICENSE-2.0
+ * @version    SVN: $Id$
+ */
+use ebbs\views\Html;
+
+Html::injectModel($blogpost);
+//var_dump($blogpost);
+
+include_once('ckeditor/ckeditor.php');
+include_once('ckfinder/ckfinder.php');
+
+$ckeditor = new CKEditor();
+$ckeditor->basePath = '/ckeditor/';
+CKFinder::setupCKEditor($ckeditor, '/ckfinder/');
+?>
+
+<h2>Add new blogpost</h2>
+<div class="editor-wrapper">
+    <?php
+    echo Html::formErrors();
+    echo Html::form('POST');
+    echo Html::formLabel('Title');
+    echo Html::formInput('Title');
+    $text = (isset($blogpost->Text)) ? $blogpost->Text : '';
+    ?>
+
+    <?php $ckeditor->editor('form[Text]', $text); ?>
+
+    <br />
+    <input type="submit" name="save" value="Submit" />
+    <input type="reset" name="reset" value="Reset" />
+    <?php echo Html::formEnd(); ?>
+</div>
+
